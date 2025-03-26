@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Web Developer</title>
+    <style>
+        /* Variables y estilos generales */
+        :root {
+            --main: #b7b1f2;
+            --secondary: #fdb7ea;
+            --tertiary: #ffdccc;
+            --fourth: #fbf3b9;
+            --text: black;
+            --contrast: white;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--contrast);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        section {
+            padding: 5rem 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Navegación */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--contrast);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--main);
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 2rem;
+        }
+        
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--main);
+        }
+        
+        /* Hero Section with animated background */
+        #home {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--contrast);
+        }
+        
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .bg-line {
+            position: absolute;
+            height: 2px;
+            opacity: 0.7;
+            animation: moveLine 15s infinite linear;
+        }
+        
+        .bg-line:nth-child(1) {
+            width: 100%;
+            background-color: var(--main);
+            top: 15%;
+            animation-duration: 15s;
+            transform: rotate(-2deg);
+        }
+        
+        .bg-line:nth-child(2) {
+            width: 80%;
+            background-color: var(--secondary);
+            top: 30%;
+            animation-duration: 12s;
+            animation-delay: -3s;
+            transform: rotate(1deg);
+        }
+        
+        .bg-line:nth-child(3) {
+            width: 90%;
+            background-color: var(--tertiary);
+            top: 45%;
+            animation-duration: 17s;
+            animation-delay: -5s;
+            transform: rotate(-1.5deg);
+        }
+        
+        .bg-line:nth-child(4) {
+            width: 85%;
+            background-color: var(--fourth);
+            top: 60%;
+            animation-duration: 14s;
+            animation-delay: -8s;
+            transform: rotate(2deg);
+        }
+        
+        .bg-line:nth-child(5) {
+            width: 95%;
+            background-color: var(--main);
+            top: 75%;
+            animation-duration: 16s;
+            animation-delay: -2s;
+            transform: rotate(-2.5deg);
+        }
+        
+        .bg-line:nth-child(6) {
+            width: 88%;
+            background-color: var(--secondary);
+            top: 85%;
+            animation-duration: 13s;
+            animation-delay: -6s;
+            transform: rotate(1.8deg);
+        }
+        
+        @keyframes moveLine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 5px solid var(--main);
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--main);
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--main);
+            color: var(--contrast);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Proyectos Section */
+        #projects {
+            background-color: var(--contrast);
+        }
+        
+        .projects-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text);
+        }
+        
+        .cards-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .card {
+            flex: 1 1 300px;
+            background-color: var(--contrast);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            max-width: 350px;
+            margin: 0 auto;
+            border: 2px solid var(--fourth);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: var(--secondary);
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        
+        .card-text {
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Modal para proyectos */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1001;
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--contrast);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 900px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--text);
+            opacity: 0.7;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            opacity: 1;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .modal-description {
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+        
+        /* Slider */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 2px solid var(--tertiary);
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            min-width: 100%;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .prev, .next {
+            background-color: var(--main);
+            color: var(--contrast);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 1rem;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* About Section */
+        #about {
+            background-color: var(--fourth);
+            background-image: linear-gradient(135deg, var(--fourth) 0%, var(--tertiary) 100%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        .about-img {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+        
+        .about-img img {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 5px solid var(--contrast);
+        }
+        
+        .about-text {
+            flex: 1 1 500px;
+        }
+        
+        .about-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        .about-description {
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+        
+        .stack-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .stack-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--contrast);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .stack-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background-color: var(--main);
+        }
+        
+        .stack-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stack-name {
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+        
+        /* Contacto y Footer */
+        #contact {
+            background-color: var(--contrast);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--contrast);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 2px solid var(--main);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--tertiary);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(253, 183, 234, 0.3);
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--main);
+            color: var(--contrast);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--tertiary);
+            color: var(--text);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            list-style: none;
+        }
+        
+        .social-link {
+            margin: 0 1rem;
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            color: var(--main);
+        }
+        
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card {
+                margin-bottom: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .stack-container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">Portfo<span style="color: var(--secondary);">lio</span></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Proyectos</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">Sobre mí</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section with animated lines background -->
+    <section id="home">
+        <div class="animated-bg">
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+        </div>
+        <div class="container hero-content">
+            <img src="/api/placeholder/600/600" alt="Foto del desarrollador" class="hero-img">
+            <h1 class="hero-title">Tu Nombre</h1>
+            <h2 class="hero-subtitle">Web Developer</h2>
+            <a href="#projects" class="btn">Ver mis proyectos</a>
+        </div>
+    </section>
+
+    <!-- Proyectos Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="projects-title">Mis Proyectos</h2>
+            <div class="cards-container">
+                <!-- Proyecto 1 -->
+                <div class="card" onclick="openModal('proyecto1')">
+                    <img src="/api/placeholder/350/200" alt="Proyecto 1" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Proyecto 1</h3>
+                        <p class="card-text">Descripción breve del proyecto. Haz clic para ver más detalles.</p>
+                        <button class="btn">Ver detalles</button>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 -->
+                <div class="card" onclick="openModal('proyecto2')">
+                    <img src="/api/placeholder/350/200" alt="Proyecto 2" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Proyecto 2</h3>
+                        <p class="card-text">Descripción breve del proyecto. Haz clic para ver más detalles.</p>
+                        <button class="btn">Ver detalles</button>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3 -->
+                <div class="card" onclick="openModal('proyecto3')">
+                    <img src="/api/placeholder/350/200" alt="Proyecto 3" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Proyecto 3</h3>
+                        <p class="card-text">Descripción breve del proyecto. Haz clic para ver más detalles.</p>
+                        <button class="btn">Ver detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modales de Proyectos -->
+        <div id="proyecto1" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal('proyecto1')">&times;</span>
+                <h2 class="modal-title">Proyecto 1</h2>
+                <p class="modal-description">Descripción detallada del proyecto. Aquí puedes hablar sobre los desafíos, tecnologías utilizadas, y tu contribución al proyecto.</p>
+                
+                <!-- Slider -->
+                <div class="slider-container">
+                    <div class="slider" id="slider1">
+                        <div class="slide">
+                            <img src="/api/placeholder/800/400" alt="Proyecto 1 - Imagen 1">
+                        </div>
+                        <div class="slide">
+                            <img src="/api/placeholder/800/400" alt="Proyecto 1 - Imagen 2">
+                        </div>
+                        <div class="slide">
+                            <img src="/api/placeholder/800/400" alt="Proyecto 1 - Imagen 3">
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="prev" onclick="prevSlide('slider1')">&#10094;</button>
+                        <button class="next" onclick="nextSlide('slider1')">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="proyecto2" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal('proyecto2')">&times;</span>
+                <h2 class="modal-title">Proyecto 2</h2>
+                <p class="modal-description">Descripción detallada del proyecto. Aquí puedes hablar sobre los desafíos, tecnologías utilizadas, y tu contribución al proyecto.</p>
+                
+                <!-- Slider -->
+                <div class="slider-container">
+                    <div class="slider" id="slider2">
+                        <div class="slide">
+                            <img src="/api/placeholder/800/400" alt="Proyecto 2 - Imagen 1">
+                        </div>
+                        <div class="slide">
+                            <img src="/api/placeholder/800/400" alt="Proyecto 2 - Imagen 2">
+                        </div>
+                        <div class="slide">
+                            <img src="/api/placeholder/800/400" alt="Proyecto 2 - Imagen 3">
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="prev" onclick="prevSlide('slider2')">&#10094;</button>
+                        <button class="next" onclick="nextSlide('slider2')">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="proyecto3" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal('proyecto3')">&times;</span>
+                <h2 class="modal-title">Proyecto 3</h2>
+                <p class="modal-description">Descripción detallada del proyecto. Aquí puedes hablar sobre los desafíos, tecnologías utilizadas, y tu contribución al proyecto.</p>
+                
+                <!-- Slider -->
+                <div class="slider-container">
+                    <div class="slider" id="slider3">
+                        <div class="slide">
+                            <img src="/api/placeholder/800/400" alt="Proyecto 3 - Imagen 1">
+                        </div>
+                        <div class="slide">
+                            <img src="/api/placeholder/800/400" alt="Proyecto 3 - Imagen 2">
+                        </div>
+                        <div class="slide">
+                            <img src="/api/placeholder/800/400" alt="Proyecto 3 - Imagen 3">
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="prev" onclick="prevSlide('slider3')">&#10094;</button>
+                        <button class="next" onclick="nextSlide('slider3')">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="/api/placeholder/400/400" alt="Foto sobre mí">
+                </div>
+                <div class="about-text">
+                    <h2 class="about-title">Sobre Mí</h2>
+                    <p class="about-description">Soy un desarrollador web apasionado por crear experiencias digitales atractivas y funcionales. Me especializo en desarrollar aplicaciones web modernas utilizando las últimas tecnologías y mejores prácticas.</p>
+                    <p class="about-description">Mi objetivo es combinar diseño y funcionalidad para crear soluciones web que no solo se vean bien, sino que también ofrezcan una excelente experiencia de usuario.</p>
+                    
+                    <h3>Mi Stack Tecnológico</h3>
+                    <div class="stack-container">
+                        <div class="stack-item">
+                            <img src="/api/placeholder/50/50" alt="JavaScript">
+                            <span class="stack-name">JavaScript</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="/api/placeholder/50/50" alt="HTML">
+                            <span class="stack-name">HTML</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="/api/placeholder/50/50" alt="CSS">
+                            <span class="stack-name">CSS</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="/api/placeholder/50/50" alt="Vue 3">
+                            <span class="stack-name">Vue 3</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="/api/placeholder/50/50" alt="Git">
+                            <span class="stack-name">Git</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="/api/placeholder/50/50" alt="GitHub">
+                            <span class="stack-name">GitHub</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="/api/placeholder/50/50" alt="REST API">
+                            <span class="stack-name">REST API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center">Contacto</h2>
+            <p class="text-center" style="margin-bottom: 3rem;">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="social-links">
+                <li><a href="#" class="social-link">LinkedIn</a></li>
+                <li><a href="#" class="social-link">GitHub</a></li>
+                <li><a href="#" class="social-link">Twitter</a></li>
+            </ul>
+            
+            <p class="footer-text">&copy; 2025 Tu Nombre. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Manejo de modales
+        function openModal(id) {
+            document.getElementById(id).style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+        
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+        
+        // Funcionalidad del slider
+        function nextSlide(sliderId) {
+            const slider = document.getElementById(sliderId);
+            const slideWidth = slider.firstElementChild.offsetWidth;
+            const maxScroll = slider.scrollWidth - slideWidth;
+            const currentScroll = slider.scrollLeft;
+            
+            if (currentScroll + slideWidth > maxScroll) {
+                slider.scrollLeft = 0;
+            } else {
+                slider.scrollLeft += slideWidth;
+            }
+        }
+        
+        function prevSlide(sliderId) {
+            const slider = document.getElementById(sliderId);
+            const slideWidth = slider.firstElementChild.offsetWidth;
+            const currentScroll = slider.scrollLeft;
+            
+            if (currentScroll === 0) {
+                slider.scrollLeft = slider.scrollWidth - slideWidth;
+            } else {
+                slider.scrollLeft -= slideWidth;
+            }
+        }
+        
+        // Auto-rotación de los sliders
+        const sliders = ['slider1', 'slider2', 'slider3'];
+        
+        sliders.forEach(sliderId => {
+            setInterval(() => {
+                // Solo rotar si el modal está visible
+                const modal = document.getElementById(sliderId).closest('.modal');
+                if (window.getComputedStyle(modal).display !== 'none') {
+                    nextSlide(sliderId);
+                }
+            }, 5000);
+        });
+        
+        // Navbar scroll activo
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList

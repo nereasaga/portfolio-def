@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Web Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="#home" class="logo">
+            <span class="logo-bracket">{</span>Mi_portfolio<span class="logo-bracket">}</span>
+        </a>
+        <div class="nav-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#home" class="nav-link" data-hover="Inicio">
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#projects" class="nav-link" data-hover="Proyectos">
+                    <span>Proyectos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="nav-link" data-hover="Sobre mí">
+                    <span>Sobre mí</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#contact" class="nav-link" data-hover="Contacto">
+                    <span>Contacto</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="language-selector">
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="eu">EU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div> -->
+</nav>
+
+    <!-- Head plus animation -->
+    <section id="home">
+        <div class="animated-bg">
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+        </div>
+        <div class="container head-content">
+            <img src="IMG_2705-2.jpg" alt="Nerea" class="head-img">
+            <h1 class="head-title">Nerea S. Gallastegui</h1>
+            <h2 class="head-subtitle">Web Developer</h2>
+            <a href="#projects" class="btn">Ver mis proyectos</a>
+        </div>
+    </section>
+
+    <!-- Proyectos Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="projects-title">Mis Proyectos</h2>
+            <div class="cards-container">
+                <!-- Proyecto 1 -->
+                <div class="card" onclick="openModal('proyecto1')">
+                    <img src="./proyectos/Padel1.jpg" alt="Proyecto 1" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Asociación de Pádel de Amorebieta</h3>
+                        <p class="card-text">Web estática. HTML y CSS.</p>
+                        <button class="btn">Ver detalles</button>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 -->
+                <div class="card" onclick="openModal('proyecto2')">
+                    <img src="./proyectos/Ghari1.jpg" alt="Proyecto 2" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Tienda online de relojes</h3>
+                        <p class="card-text">Web dinámica. HTML, CSS y JavaScript.</p>
+                        <button class="btn">Ver detalles</button>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3 -->
+                <div class="card" onclick="openModal('proyecto3')">
+                    <img src="./proyectos/Meteobee1.jpg" alt="Proyecto 3" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Meteorología para apicultores</h3>
+                        <p class="card-text">Single-Page Application. Vue.js, JSON Server, API REST.</p>
+                        <button class="btn">Ver detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modales de Proyectos -->
+        <div id="proyecto1" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal('proyecto1')">&times;</span>
+                <h2 class="modal-title">Asociación de Pádel de Amorebieta</h2>
+                <p class="modal-description">Proyecto en grupo desarrollado en el Bootcamp de desarrollo web Full Stack de Peñascal F5. Creamos una web estática sobre un club de pádel ficticio utilizando HTML5 y CSS3. <br>
+                <a class="project-web-link" href="https://nereasaga.github.io/proyecto-web-deportiva/index.html" target="_blank">Ir al sitio web</a></p>
+                
+                <!-- Slider -->
+                <div class="slider-container">
+                    <div class="slider" id="slider1">
+                        <div class="slide active">
+                            <img src="./proyectos/Padel1.jpg" alt="Proyecto 1 - Imagen 1">
+                        </div>
+                        <div class="slide">
+                            <img src="./proyectos/Padel2.jpg" alt="Proyecto 1 - Imagen 2">
+                        </div>
+                        <div class="slide">
+                            <img src="./proyectos/Padel3.jpg" alt="Proyecto 1 - Imagen 3">
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="prev" onclick="prevSlide('slider1')">&#10094;</button>
+                        <button class="next" onclick="nextSlide('slider1')">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="proyecto2" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal('proyecto2')">&times;</span>
+                <h2 class="modal-title">Tienda online de relojes</h2>
+                <p class="modal-description">Proyecto en grupo desarrollado en el Bootcamp de Desarrollo Web Full Stack de Peñascal F5, sobre una página web dinámica creada utilizando HTML, CSS y Javascript. <br>
+                    <a class="project-web-link" href="https://heartfelt-cat-19391e.netlify.app/" target="_blank">Ir al sitio web</a></p>
+                
+                <!-- Slider -->
+                <div class="slider-container">
+                    <div class="slider" id="slider2">
+                        <div class="slide active">
+                            <img src="./proyectos/Ghari1.jpg" alt="Proyecto 2 - Imagen 1">
+                        </div>
+                        <div class="slide">
+                            <img src="./proyectos/Ghari2.jpg" alt="Proyecto 2 - Imagen 2">
+                        </div>
+                        <div class="slide">
+                            <img src="./proyectos/Ghari3.jpg" alt="Proyecto 2 - Imagen 3">
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="prev" onclick="prevSlide('slider2')">&#10094;</button>
+                        <button class="next" onclick="nextSlide('slider2')">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="proyecto3" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal('proyecto3')">&times;</span>
+                <h2 class="modal-title">Meteorología para apicultores</h2>
+                <p class="modal-description">Proyecto grupal creado en el bootcamp de Desarrollo Web Full Stack de Peñascal F5.
+                    Consiste en una Single-Page Application creada con Vue.js cuya principal funcionalidad se basa en recoger datos meteorológicos actuales de la API de Aemet y, además de plasmarlos, dar recomendaciones a apicultores en función de éstos. <br>
+                    <a class="project-web-link" href="https://intxaurtietadev.github.io/meteobee/" target="_blank">Ir al sitio web</a></p>
+                
+                <!-- Slider -->
+                <div class="slider-container">
+                    <div class="slider" id="slider3">
+                        <div class="slide active">
+                            <img src="./proyectos/Meteobee1.jpg" alt="Proyecto 3 - Imagen 1">
+                        </div>
+                        <div class="slide">
+                            <img src="./proyectos/Meteobee2.jpg" alt="Proyecto 3 - Imagen 2">
+                        </div>
+                        <div class="slide">
+                            <img src="./proyectos/Meteobee3.jpg" alt="Proyecto 3 - Imagen 3">
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="prev" onclick="prevSlide('slider3')">&#10094;</button>
+                        <button class="next" onclick="nextSlide('slider3')">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <!-- <div class="about-img">
+                    <img src="./_DSC8621c2.jpg" alt="Foto sobre mí">
+                </div> -->
+                <div class="about-text">
+                    <h2 class="about-title">Sobre Mí</h2>
+                    <p class="about-description">Soy Nerea, estudiante de desarrollo web con experiencia en HTML, CSS, JavaScript, Vue.js y Python. Me encanta combinar diseño y lógica para crear soluciones innovadoras y eficientes.</p>
+                    <p class="about-description">En este espacio encontrarás los proyectos que he desarrollado y que reflejan mi crecimiento en el mundo del desarrollo web.</p>
+                    
+                    <h3>Mi Stack Tecnológico</h3>
+                    <div class="stack-container">
+                        <div class="stack-item">
+                            <img src="icons/html5.png" alt="HTML">
+                            <span class="stack-name">HTML</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="icons/CSS3.png" alt="CSS">
+                            <span class="stack-name">CSS</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="icons/javascript.png" alt="JavaScript">
+                            <span class="stack-name">JavaScript</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="icons/vue.png" alt="Vue.js">
+                            <span class="stack-name">Vue.js</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="icons/python.png" alt="Python">
+                            <span class="stack-name">Python</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="icons/git.png" alt="Git">
+                            <span class="stack-name">Git</span>
+                        </div>
+                        <!-- <div class="stack-item">
+                            <img src="icons/github.png" alt="GitHub">
+                            <span class="stack-name">GitHub</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="/api/placeholder/50/50" alt="REST API">
+                            <span class="stack-name">REST API</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="icons/jira.webp" alt="JIRA">
+                            <span class="stack-name">JIRA</span> -->
+                        </div>
+                    </div>
+
+                    <!-- <div class="spotify-playlist">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2Qw9KRPUN2KrPOmsg1QuvL?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center">Contacto</h2>
+            <p class="text-center" style="margin-bottom: 3rem;">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+            
+            <form class="contact-form" action="https://formspree.io/f/moveloke" method="POST">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="social-links">
+                <li><a href="https://www.linkedin.com/in/nereasgallastegui/" class="social-link" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/nereasaga" class="social-link" target="_blank">GitHub</a></li>
+            </ul>
+            
+            <p class="footer-text">&copy; 2025 Nerea S. Gallastegui. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Manejo de modales
+        function openModal(id) {
+            document.getElementById(id).style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+        
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+        
+        // Funcionalidad del slider
+        function nextSlide(sliderId) {
+    const slider = document.getElementById(sliderId);
+    const slides = slider.querySelectorAll('.slide');
+    const currentSlide = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    
+    // Eliminar clase active del slide actual
+    slides[currentSlide].classList.remove('active');
+    
+    // Calcular el próximo slide
+    const nextIndex = (currentSlide + 1) % slides.length;
+    slides[nextIndex].classList.add('active');
+}
+
+function prevSlide(sliderId) {
+    const slider = document.getElementById(sliderId);
+    const slides = slider.querySelectorAll('.slide');
+    const currentSlide = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    
+    // Eliminar clase active del slide actual
+    slides[currentSlide].classList.remove('active');
+    
+    // Calcular el slide anterior
+    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+    slides[prevIndex].classList.add('active');
+}
+        
+        // Navbar scroll activo
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList = 'nav-link';
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Función para cambiar al tema retro
+function switchToRetroTheme() {
+    // Cambiamos las variables CSS para los colores
+    document.documentElement.style.setProperty('--main', '#47493F');
+    document.documentElement.style.setProperty('--secondary', '#7E5CAD');
+    document.documentElement.style.setProperty('--tertiary', '#72BAA9');
+    document.documentElement.style.setProperty('--fourth', '#D5E7B5');
+    
+    // Reemplazamos las líneas con círculos
+    const animatedBg = document.querySelector('.animated-bg');
+    
+    // Limpiamos las líneas existentes
+    animatedBg.innerHTML = '';
+    
+    // Creamos círculos estilo años 60
+    for (let i = 0; i < 15; i++) {
+        const circle = document.createElement('div');
+        circle.className = 'bg-circle';
+        
+        // Tamaño aleatorio entre 20px y 80px
+        const size = Math.floor(Math.random() * 60) + 20;
+        circle.style.width = `${size}px`;
+        circle.style.height = `${size}px`;
+        
+        // Posiciones aleatorias
+        circle.style.left = `${Math.random() * 100}%`;
+        circle.style.top = `${Math.random() * 100}%`;
+        
+        // Velocidad aleatoria
+        const duration = Math.floor(Math.random() * 20) + 10;
+        circle.style.animationDuration = `${duration}s`;
+        
+        // Retraso aleatorio
+        circle.style.animationDelay = `${Math.random() * 5}s`;
+        
+        // Color aleatorio entre los 4 colores del tema
+        const colors = ['--main', '--secondary', '--tertiary', '--fourth'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        circle.style.backgroundColor = `var(${randomColor})`;
+        
+        // Añadir a la animación
+        animatedBg.appendChild(circle);
+    }
+    
+    // Añadimos estilos para la animación de círculos
+    const styleEl = document.createElement('style');
+    styleEl.innerHTML = `
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: moveCircle 15s infinite linear;
+        }
+        
+        @keyframes moveCircle {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(50px, 20px) scale(1.2);
+            }
+            50% {
+                transform: translate(100px, -20px) scale(0.8);
+            }
+            75% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        
+        /* Estilos adicionales retro años 60 */
+        .btn, .submit-btn {
+            background-color: var(--secondary);
+            border-radius: 0;
+            border: 2px solid var(--fourth);
+        }
+        
+        .hero-img, .about-img img {
+            border: 8px solid var(--tertiary);
+            border-radius: 50%;
+        }
+        
+        .card {
+            border-radius: 0;
+            border: 3px solid var(--main);
+        }
+        
+        /* Tipografía más groovy */
+        h1, h2, h3, .logo {
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    `;
+    document.head.appendChild(styleEl);
+    
+    // Cambiamos el texto del botón
+    document.getElementById('theme-toggle').textContent = 'Volver al Tema Original';
+    document.getElementById('theme-toggle').onclick = switchToOriginalTheme;
+}
+
+// Función para volver al tema original
+function switchToOriginalTheme() {
+    // Restaurar las variables CSS originales
+    document.documentElement.style.setProperty('--main', '#b7b1f2');
+    document.documentElement.style.setProperty('--secondary', '#fdb7ea');
+    document.documentElement.style.setProperty('--tertiary', '#ffdccc');
+    document.documentElement.style.setProperty('--fourth', '#fbf3b9');
+    
+    // Restaurar las líneas animadas
+    const animatedBg = document.querySelector('.animated-bg');
+    animatedBg.innerHTML = `
+        <div class="bg-line"></div>
+        <div class="bg-line"></div>
+        <div class="bg-line"></div>
+        <div class="bg-line"></div>
+        <div class="bg-line"></div>
+        <div class="bg-line"></div>
+    `;
+    
+    // Eliminar los estilos retro añadidos
+    const styleElements = document.head.querySelectorAll('style');
+    styleElements.forEach(styleEl => {
+        if (styleEl.innerHTML.includes('.bg-circle')) {
+            document.head.removeChild(styleEl);
+        }
+    });
+    
+    // Cambiamos el texto del botón
+    document.getElementById('theme-toggle').textContent = 'Cambiar Tema';
+    document.getElementById('theme-toggle').onclick = switchToRetroTheme;
+}
+
+// Función para añadir el botón de cambio de tema
+function addThemeToggleButton() {
+    const themeToggle = document.createElement('button');
+    themeToggle.id = 'theme-toggle';
+    themeToggle.className = 'theme-toggle-btn';
+    themeToggle.textContent = 'Cambiar Tema';
+    themeToggle.onclick = switchToRetroTheme;
+    
+    // Estilos para el botón
+    const styleEl = document.createElement('style');
+    styleEl.innerHTML = `
+        .theme-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--main);
+            color: var(--contrast);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+    `;
+    document.head.appendChild(styleEl);
+    
+    // Añadir el botón al documento
+    document.body.appendChild(themeToggle);
+}
+
+
+    // Responsive Mobile Menu
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('is-active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when a nav link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('is-active');
+            navMenu.classList.remove('active');
+        });
+    });
+    
+
+
+// Ejecutar cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', function() {
+    addThemeToggleButton();
+});
+    </script>
+</body>
+</html>
