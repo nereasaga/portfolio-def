@@ -396,6 +396,7 @@
         .cards-container {
             display: flex;
             justify-content: space-between;
+            align-items: stretch;
             flex-wrap: wrap;
             gap: 2rem;
         }
@@ -412,6 +413,8 @@
             max-width: 350px;
             margin: 0 auto;
             border: 2px solid var(--fourth);
+            display: flex;
+            flex-direction: column;
         }
         
         .card:hover {
@@ -428,6 +431,10 @@
         
         .card-content {
             padding: 1.5rem;
+            flex-direction: column;
+            height: 100%;
+            display: flex;
+            flex-grow: 1;
         }
         
         .card-title {
@@ -439,8 +446,16 @@
         .card-text {
             color: var(--text);
             opacity: 0.7;
-            margin-bottom: 1.5rem;
+            flex-grow: 1; 
+            margin-bottom: 1rem;
         }
+    
+        
+        .card-content .btn {
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
         
         /* Modal para proyectos */
         .modal {
