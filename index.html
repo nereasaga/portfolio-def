@@ -365,7 +365,7 @@ function prevSlide(sliderId) {
             });
         });
 
-        // Función para cambiar al tema retro
+        // Function to switch to retro theme
 function switchToRetroTheme() {
     // Cambiamos las variables CSS para los colores
     document.documentElement.style.setProperty('--main', '#47493F');
@@ -373,13 +373,11 @@ function switchToRetroTheme() {
     document.documentElement.style.setProperty('--tertiary', '#72BAA9');
     document.documentElement.style.setProperty('--fourth', '#D5E7B5');
     
-    // Reemplazamos las líneas con círculos
-    const animatedBg = document.querySelector('.animated-bg');
-    
     // Limpiamos las líneas existentes
+    const animatedBg = document.querySelector('.animated-bg');
     animatedBg.innerHTML = '';
     
-    // Creamos círculos estilo años 60
+    // Creamos círculos estilo años 60 SOLO en el área de encabezado
     for (let i = 0; i < 15; i++) {
         const circle = document.createElement('div');
         circle.className = 'bg-circle';
@@ -389,7 +387,7 @@ function switchToRetroTheme() {
         circle.style.width = `${size}px`;
         circle.style.height = `${size}px`;
         
-        // Posiciones aleatorias
+        // Posiciones RELATIVAS al área de encabezado
         circle.style.left = `${Math.random() * 100}%`;
         circle.style.top = `${Math.random() * 100}%`;
         
@@ -409,14 +407,25 @@ function switchToRetroTheme() {
         animatedBg.appendChild(circle);
     }
     
-    // Añadimos estilos para la animación de círculos
+    // Modificamos los estilos para los círculos
     const styleEl = document.createElement('style');
+    styleEl.id = 'retro-theme-styles';
     styleEl.innerHTML = `
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
         .bg-circle {
             position: absolute;
             border-radius: 50%;
             opacity: 0.5;
             animation: moveCircle 15s infinite linear;
+            z-index: 1; /* Asegura que los círculos estén detrás del contenido */
         }
         
         @keyframes moveCircle {
@@ -434,6 +443,14 @@ function switchToRetroTheme() {
             }
             100% {
                 transform: translate(0, 0) scale(1);
+            }
+        }
+        
+        /* Responsive fixes */
+        @media (max-width: 768px) {
+            .bg-circle {
+                max-width: 50px;
+                max-height: 50px;
             }
         }
         
@@ -487,12 +504,10 @@ function switchToOriginalTheme() {
     `;
     
     // Eliminar los estilos retro añadidos
-    const styleElements = document.head.querySelectorAll('style');
-    styleElements.forEach(styleEl => {
-        if (styleEl.innerHTML.includes('.bg-circle')) {
-            document.head.removeChild(styleEl);
-        }
-    });
+    const retroStyles = document.getElementById('retro-theme-styles');
+    if (retroStyles) {
+        document.head.removeChild(retroStyles);
+    }
     
     // Cambiamos el texto del botón
     document.getElementById('theme-toggle').textContent = 'Cambiar Tema';
