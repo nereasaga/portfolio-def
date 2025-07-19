@@ -16,7 +16,7 @@
     <div class="container nav-container">
         <a href="#home" class="logo">
             <!-- <img class="img-logo" src="./icons/favicon.png" alt=""> -->
-            <span class="logo-bracket">{</span>Mi_portfolio<span class="logo-bracket">}</span>
+            <span class="logo-bracket">{</span>Nerea_SG<span class="logo-bracket">}</span>
         </a>
         <div class="nav-toggle" id="mobile-menu">
             <span class="bar"></span>
@@ -75,7 +75,10 @@
     <section id="projects">
         <div class="container">
             <h2 class="projects-title">Mis Proyectos</h2>
-            <div class="cards-container">
+            <div class="carousel-wrapper">
+                <button class="carousel-btn prev-btn">&#10094;</button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
                 <!-- Proyecto 1 -->
                 <div class="card" onclick="openModal('proyecto1')">
                     <img src="./proyectos/Padel1mini.jpg" alt="Proyecto 1" class="card-img">
@@ -105,7 +108,20 @@
                         <button class="btn">Ver detalles</button>
                     </div>
                 </div>
+
+                <!-- Proyecto 4 -->
+                <div class="card" onclick="openModal('proyecto4')">
+                    <img src="./proyectos/vlad1mini.png" alt="Proyecto 4" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Portfolio para neurocientífico</h3>
+                        <p class="card-text">Web Dinámica. HTML, CSS, JavaScript, JSON Server, JSON Server Auth.</p>
+                        <button class="btn">Ver detalles</button>
+                    </div>
+                </div>
             </div>
+        </div>
+        <button class="carousel-btn next-btn">&#10095;</button>
+    </div>
         </div>
         
         <!-- Modales de Proyectos -->
@@ -193,6 +209,41 @@
                 </div>
             </div>
         </div>
+
+        <!---  Modal proyecto 4 -->
+        <div id="proyecto4" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal('proyecto4')">&times;</span>
+                <h2 class="modal-title">Portfolio para neurocientífico</h2>
+                <p class="modal-description"> Web dinámica para mostrar los artículos científicos y proyectos de un neurocientífico. <br>
+                    Puede mostrarse en cuatro idiomas, contiene un botón para descargar el CV en formato PDF, y dispone de una intranet donde poder añadir y borrar artículos y proyectos.
+                    <br> El fondo consiste en una sutil animación en tiempo real de una red neuronal biológica, con neuronas interconectadas que propagan impulsos y formas orgánicas realistas.
+                    <br>
+                    <a class="project-web-link" href="https://vladislavsoldatov.netlify.app/" target="_blank">Ir al sitio web</a></p>
+                
+                <!-- Slider -->
+                <div class="slider-container">
+                    <div class="slider" id="slider4">
+                        <div class="slide active">
+                            <img src="./proyectos/vlad1.png" alt="Proyecto 4 - Imagen 1">
+                        </div>
+                        <div class="slide">
+                            <img src="./proyectos/vlad2.png" alt="Proyecto 4 - Imagen 2">
+                        </div>
+                        <div class="slide">
+                            <img src="./proyectos/vlad3.png" alt="Proyecto 4 - Imagen 3">
+                        </div>
+                        <div class="slide">
+                            <img src="./proyectos/vlad4.png" alt="Proyecto 4 - Imagen 4">
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="prev" onclick="prevSlide('slider4')">&#10094;</button>
+                        <button class="next" onclick="nextSlide('slider4')">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
@@ -230,8 +281,20 @@
                             <span class="stack-name">Python</span>
                         </div>
                         <div class="stack-item">
+                            <img src="icons/java.png" alt="Java">
+                            <span class="stack-name">Java</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="icons/Spring_Boot.png" alt="Spring Boot">
+                            <span class="stack-name">Spring Boot</span>
+                        </div>
+                        <div class="stack-item">
                             <img src="icons/git.png" alt="Git">
                             <span class="stack-name">Git</span>
+                        </div>
+                        <div class="stack-item">
+                            <img src="icons/sourcetree.svg" alt="Sourcetree">
+                            <span class="stack-name">Sourcetree</span>
                         </div>
                         <!-- <div class="stack-item">
                             <img src="icons/github.png" alt="GitHub">
@@ -295,6 +358,8 @@
     </footer>
 
     <script>
+
+        
         // Manejo de modales
         function openModal(id) {
             document.getElementById(id).style.display = "block";
@@ -575,6 +640,41 @@ function addThemeToggleButton() {
 // Ejecutar cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function() {
     addThemeToggleButton();
+    const track = document.querySelector('.carousel-track');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const cards = track.querySelectorAll('.card');
+    const cardWidth = cards[0].offsetWidth + 32; // tarjeta + gap
+    const visibleCards = 3;
+
+    let currentPosition = 0;
+    const maxScroll = (cards.length - visibleCards) * cardWidth;
+
+    function updatePosition(newPosition) {
+        currentPosition = newPosition;
+        track.style.transform = `translateX(-${currentPosition}px)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPosition >= maxScroll) {
+            updatePosition(0); // volver al inicio
+        } else {
+            updatePosition(Math.min(currentPosition + cardWidth, maxScroll));
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPosition <= 0) {
+            updatePosition(maxScroll); // ir al final
+        } else {
+            updatePosition(Math.max(currentPosition - cardWidth, 0));
+        }
+    });
+
+    // Scroll automático
+    setInterval(() => {
+        nextBtn.click();
+    }, 4000);
 });
     </script>
 </body>

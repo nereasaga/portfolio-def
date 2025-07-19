@@ -496,6 +496,62 @@
             margin-top: auto;
         }
 
+        .carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .carousel-track-container {
+            overflow: hidden;
+
+    padding: 0 50px;
+            flex: 1;
+        }
+        
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-btn {
+            background-color: var(--main);
+            color: var(--contrast);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 2;
+        
+            /* Añadido */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .prev-btn {
+            left: -2rem; 
+        }
+        
+        .next-btn {
+            right: -2rem; 
+        }
+        
+        .carousel-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        .carousel-track .card {
+            flex: 0 0 calc(33.333% - 2rem);
+            max-width: calc(33.333% - 2rem);
+        }
+        
+
         
         /* Modal para proyectos */
         .modal {
