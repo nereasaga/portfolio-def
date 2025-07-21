@@ -425,6 +425,7 @@
         /* Proyectos Section */
         #projects {
             background-color: var(--contrast);
+            padding-top: 6rem;
         }
         
         .projects-title {
@@ -451,7 +452,7 @@
             cursor: pointer;
             position: relative;
             max-width: 350px;
-            margin: 0 auto;
+            margin: 1rem auto 0 auto;
             border: 2px solid var(--fourth);
             display: flex;
             flex-direction: column;
@@ -501,12 +502,13 @@
             display: flex;
             align-items: center;
             width: 100%;
+            padding: 1rem 0;
         }
         
         .carousel-track-container {
             overflow: hidden;
 
-    padding: 0 50px;
+            padding: 1rem 50px;
             flex: 1;
         }
         
@@ -527,8 +529,7 @@
             cursor: pointer;
             transition: var(--transition);
             z-index: 2;
-        
-            /* Añadido */
+
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -889,5 +890,40 @@
             
             .stack-container {
                 justify-content: center;
+            }
+
+            .carousel-btn {
+                display: none;
+            }
+
+            .carousel-track-container {
+                overflow: visible;
+                padding: 1rem 0;
+            }
+            
+            .carousel-track {
+                flex-direction: column;
+                transform: none !important;
+                gap: 1.5rem;
+                width: 100%;
+            }
+            
+            .carousel-track .card {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            .carousel-wrapper {
+                padding: 1rem 0;
+                overflow: visible;
+            }
+            
+            
+            .carousel-track .card {
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
             }
         }
