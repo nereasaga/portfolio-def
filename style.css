@@ -926,4 +926,26 @@
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
             }
+            .modal-content {
+                width: 100%;
+                margin: 2% auto;
+                padding: 1rem;
+                border-radius: 0;
+            }
+            
+            .slide img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .close-modal {
+                top: 0.5rem;
+                right: 1rem;
+                font-size: 1.5rem;
+            }
         }
